@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" >-->
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="vueDemo.css">
+</head>
+<body>
+<div id="intro">
+    <h2>介绍</h2>
+    <span v-bind:title="message">
+        鼠标悬停查看提示信息！
+    </span>
+    <ol>
+        <li v-for='list in lists'>{{list.text}}</li>
+    </ol>
+    <p>{{message2}}</p>
+    <input v-model="message2">
+    <button v-on:click="change">消息逆转</button>
+</div>
+
+<div id="instance">
+    <h2>vue实例</h2>
+    <p>{{flag}}</p>
+    <button v-on:click="change">修改信息</button>
+    <p>不可修改：{{obj.flag2}}</p>
+    <button v-on:click="flag2='2'">修改信息</button>
+</div>
+
+<div id="grammer">
+    <h2>模板语法</h2>
+    <p>用HTML代码：{{rawHtml}}</p>
+    <p>输出真正HTML：<span v-html="rawHtml"></span></p>
+</div>
+
+<div id="Css">
+    <h2>css与style绑定</h2>
+    <p class="no1" v-bind:class="{red:isTrue}">点下面按钮会改变样式</p>
+    <button v-on:click="change">改变样式</button>
+    <p v-bind:style="{color:red}">绑定内联样式</p>
+</div>
+
+<div id="if">
+    <h2>条件渲染</h2>
+    <template v-if="flag">
+        <label>谁最帅</label>
+        <input placeholder="谁最帅" key="person">
+    </template>
+    <template v-else>
+        <label>谁最好看</label>
+        <input placeholder="谁最好看" key="name">
+    </template>
+    <button v-on:click="change">换一个问题</button>
+</div>
+
+<div id="list">
+    <h2>列表渲染</h2>
+    <p v-for="(key,value) in list">{{value}}.{{key}}</p>
+</div>
+
+<div id="event">
+    <h2>事件处理</h2>
+    <p>{{message}}</p>
+    <button v-on:click="add">点这里！</button>
+    <button v-on:click="hi">不！点这里！</button>
+</div>
+
+<div id="input">
+    <h2>表单输入绑定</h2>
+    <input type="checkbox" id="a" value="蛋糕" v-model="a">
+    <label for="a">蛋糕</label>
+    <input type="checkbox" id="b" value="曲奇" v-model="a">a
+    <label for="b">曲奇</label>
+    <input type="checkbox" id="c" value="冰激凌" v-model="a">
+    <label for="c">冰激凌</label>
+    <br>
+    <span>好饿啊: {{ a }}</span>
+    <p>真的饿了:</p>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <br>
+    <textarea v-model="message" placeholder="多行文本"></textarea>
+</div>
+
+<script src="vueDemo.js"></script>
+</body>
+</html>
